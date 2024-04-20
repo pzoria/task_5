@@ -8,17 +8,16 @@ WINDOWS_BINARY = windows_binary
 
 # Targets
 linux:
-    GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) .
+	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) .
 
 arm:
-    GOOS=linux GOARCH=arm go build -o $(ARM_BINARY) .
+	GOOS=linux GOARCH=arm go build -o $(ARM_BINARY) .
 
 macos:
-    GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) .
+	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) .
 
 windows:
-    GOOS=windows GOARCH=amd64 go build -o $(WINDOWS_BINARY).exe .
+	GOOS=windows GOARCH=amd64 go build -o $(WINDOWS_BINARY).exe .
 
 clean:
-    rm -f $(LINUX_BINARY) $(ARM_BINARY) $(MACOS_BINARY) $(WINDOWS_BINARY).exe
-
+	rm -f $(LINUX_BINARY) $(ARM_BINARY) $(MACOS_BINARY) $(WINDOWS_BINARY).exe
