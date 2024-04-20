@@ -21,3 +21,7 @@ windows:
 
 clean:
 	rm -f $(LINUX_BINARY) $(ARM_BINARY) $(MACOS_BINARY) $(WINDOWS_BINARY).exe
+
+# Dummy target to avoid error
+image:
+	@echo "Dummy target for image"
