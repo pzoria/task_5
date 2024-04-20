@@ -1,31 +1,20 @@
-# Makefile for compiling code on different platforms and architectures
-
-# Define variables
-LINUX_BINARY = linux_binary
-ARM_BINARY = arm_binary
-MACOS_BINARY = macos_binary
-WINDOWS_BINARY = windows_binary
+# Variables
+IMAGE_TAG := my-product
+DOCKERFILE := Dockerfile
 
 # Targets
 linux:
-	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) .
+	@docker build -t $(IMAGE_TAG):linux -f $(DOCKERFILE) .
 
 arm:
-	GOOS=linux GOARCH=arm go build -o $(ARM_BINARY) .
+	@docker build -t $(IMAGE_TAG):arm -f $(DOCKERFILE) .
 
 macos:
-	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) .
+	@docker build -t $(IMAGE_TAG):macos -f $(DOCKERFILE) .
 
 windows:
-	GOOS=windows GOARCH=amd64 go build -o $(WINDOWS_BINARY).exe .
+	@docker build -t $(IMAGE_TAG):windows -f $(DOCKERFILE) .
 
 clean:
-	rm -f $(LINUX_BINARY) $(ARM_BINARY) $(MACOS_BINARY) $(WINDOWS_BINARY).exe
+	@docker rmi $(IMAGE_TAG)
 
-# Target to build Docker image
-docker-build:
-	docker build -t my_image .
-
-# Dummy target to avoid error
-image:
-	@echo "Dummy target for image"

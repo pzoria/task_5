@@ -1,17 +1,13 @@
-# Dockerfile for running test suite on different platforms and architectures
-
-# Use base image
+# Use the base image
 FROM quay.io/projectquay/golang:1.20
 
 # Set working directory
 WORKDIR /app
 
-# Copy binary to container
-COPY linux_binary /app/
-COPY arm_binary /app/
-COPY macos_binary /app/
-COPY windows_binary.exe /app/
+# Copy your code to the container
+COPY . .
 
-# Define entrypoint
-CMD ["./linux_binary"] # Change this according to the binary you want to run the tests on
+# Add any additional setup commands here
 
+# Define the command to run your tests
+CMD ["./run_tests.sh"]
