@@ -25,3 +25,7 @@ clean:
 # Target to build Docker image
 docker-build:
 	docker build -t my_image .
+
+# Dummy target to avoid error
+image:
+	@echo "Dummy target for image"
